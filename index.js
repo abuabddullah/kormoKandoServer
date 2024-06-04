@@ -134,15 +134,22 @@ async function run() {
       res.send(results);
     });
 
-    
     // basic GET req for getting a single task
     // here multiple params could be passed like "/recipes/:id/:name" and we can get like const { id, name } = req.params;
     app.get("/api/v1/tasks/:id", async (req, res) => {
-        const { id } = req.params;
-        const query = { _id: new ObjectId(id) };
-        const recipe = await tasksCollection4KormoKando.findOne(query);
-        res.send(recipe);
-      });
+      const { id } = req.params;
+      const query = { _id: new ObjectId(id) };
+      const recipe = await tasksCollection4KormoKando.findOne(query);
+      res.send(recipe);
+    });
+
+    // basic DELETE req for deleting a single task
+    app.delete("/api/v1/tasks/:id", verifyToken, async (req, res) => {
+      const { id } = req.params;
+      const query = { _id: new ObjectId(id) };
+      const result = await tasksCollection4KormoKando.deleteOne(query);
+      res.send(result);
+    });
 
     console.log("Successfully connected to MongoDB!");
   } finally {
