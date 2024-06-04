@@ -136,7 +136,7 @@ async function run() {
 
     // basic GET req for getting a single task
     // here multiple params could be passed like "/recipes/:id/:name" and we can get like const { id, name } = req.params;
-    app.get("/api/v1/tasks/:id", async (req, res) => {
+    app.get("/api/v1/tasks/get/:id", async (req, res) => {
       const { id } = req.params;
       const query = { _id: new ObjectId(id) };
       const recipe = await tasksCollection4KormoKando.findOne(query);
