@@ -4,3 +4,4 @@
 - verifyJWT for edit profile,
 - need to remove nodemodules folder from githube repo
   -need to add mongoose and segregate routes
+  - when i get logged in through a new gmail it gives me previous email in **_req.user_**

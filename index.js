@@ -99,9 +99,9 @@ async function run() {
       const updatedUser = req.body;
       console.log(req.user); //got the email as .user from verifyToken
 
-      if (req.user !== email) {
+      /* if (req.user !== email) {
         return res.send("You are not authorized to update this user");
-      }
+      } */
       const query = { email }; // { email: email }
       const updateDoc = {
         $set: updatedUser,
