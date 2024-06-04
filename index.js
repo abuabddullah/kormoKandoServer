@@ -151,6 +151,23 @@ async function run() {
       res.send(result);
     });
 
+    // basic PATCH req for updatting a single task
+    app.patch("/api/v1/tasks/:id", verifyToken, async (req, res) => {
+      const { id } = req.params;
+      const updatedRecipe = req.body;
+      const query = { _id: new ObjectId(id) };
+      const updateDoc = {
+        $set: updatedRecipe,
+      };
+      const options = { upsert: true }; // if the document does not exist, insert it
+      const result = await tasksCollection4KormoKando.updateOne(
+        query,
+        updateDoc,
+        options
+      );
+      res.send(result);
+    });
+
     console.log("Successfully connected to MongoDB!");
   } finally {
   }
