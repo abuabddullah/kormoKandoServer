@@ -65,7 +65,7 @@ async function run() {
       if (isExistingUser?.email) {
         return res.send({
           status: "success",
-          message: "Login Successfull.User already exists!",
+          message: "User already exists!",
           token,
         });
       }
